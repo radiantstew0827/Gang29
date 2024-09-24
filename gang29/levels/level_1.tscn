@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://tnkstllrqrim"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_5sls7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
+albedo_color = Color(0.59, 0.385762, 0.1947, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pna3"]
+albedo_color = Color(0.433886, 0.488662, 1, 1)
+
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
+script = ExtResource("1_5sls7")
+camera_point = NodePath("Marker3D")
+present_room = NodePath("Present")
+future_room = NodePath("Future")
+
+[node name="Present" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_n0oft")
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Future" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
+material_override = SubResource("StandardMaterial3D_0pna3")
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 4)
