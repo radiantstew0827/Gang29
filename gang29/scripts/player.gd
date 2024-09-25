@@ -1,7 +1,6 @@
 extends Camera3D
 
 @export var future_mode : bool = true
-@export var current_level_number : int
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,9 +13,10 @@ func _process(delta: float) -> void:
 	pass
 	
 func update_camera():
-	rotation = Vector3(-30,45,0)
+	rotation = Vector3(deg_to_rad(-30),deg_to_rad(45),0)
 	
-	var current_level : Level = get_tree().root.get_node("level"+str(current_level_number))
+	print(get_node("/root"))
+	var current_level : Level = get_tree().current_scene.current_level
 	var camera_point: Vector3
 	match future_mode:
 		true:

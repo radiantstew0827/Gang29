@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dx11ljl8uk5yh" path="res://player.tscn" id="2_d843j"]
 [ext_resource type="PackedScene" uid="uid://tnkstllrqrim" path="res://levels/level_1.tscn" id="2_n1jrb"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_fsvus")
 levels = Array[PackedScene]([ExtResource("2_n1jrb")])
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_d843j")]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0.302564, 1.19209e-07, 1.0164)
