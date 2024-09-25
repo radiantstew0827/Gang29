@@ -25,3 +25,9 @@ func update_camera():
 			camera_point = current_level.camera_point.position
 		
 	position = camera_point
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("time_switch"):
+		future_mode = not future_mode
+		update_camera()
+		pass
