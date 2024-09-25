@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkljsr2ucp0ml"]
+[gd_scene load_steps=5 format=3 uid="uid://dkljsr2ucp0ml"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_fsvus"]
 [ext_resource type="PackedScene" uid="uid://dx11ljl8uk5yh" path="res://player.tscn" id="2_d843j"]
 [ext_resource type="PackedScene" uid="uid://tnkstllrqrim" path="res://levels/level_1.tscn" id="2_n1jrb"]
+[ext_resource type="PackedScene" uid="uid://bhhmjgw6126cb" path="res://draging_component.tscn" id="4_my6mk"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_fsvus")
@@ -12,3 +13,6 @@ player = NodePath("Player")
 [node name="Player" parent="." instance=ExtResource("2_d843j")]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0.302564, 1.19209e-07, 1.0164)
 future_mode = false
+
+[node name="DragingComponent" parent="Player" node_paths=PackedStringArray("player_camera") instance=ExtResource("4_my6mk")]
+player_camera = NodePath("..")

@@ -9,7 +9,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func outline(visible : bool) -> void:
-	print(visible)
 	if visible and outline_shader:
 		pass
 		#create
