@@ -1,4 +1,5 @@
 extends Camera3D
+class_name Player
 
 @export var future_mode : bool = true
 
@@ -34,7 +35,6 @@ func _process(_delta: float) -> void:
 	hover_object = result["collider"]
 	hover_object.outline(true)
 	
-	# then get the object using this: https://docs.godotengine.org/en/stable/classes/class_physicsdirectspacestate3d.html#class-physicsdirectspacestate3d-method-intersect-ray
 	# then figure the rest out
 	pass
 	
