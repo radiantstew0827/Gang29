@@ -4,3 +4,4 @@
 
 [node name="DragingComponent" type="Node"]
 script = ExtResource("1_e00xg")
+enabled = null
