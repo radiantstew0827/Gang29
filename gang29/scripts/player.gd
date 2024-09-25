@@ -9,13 +9,12 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func update_camera():
-	rotation = Vector3(deg_to_rad(-30),deg_to_rad(45),0)
+	rotation = Vector3(deg_to_rad(-45),deg_to_rad(45),0)
 	
-	print(get_node("/root"))
 	var current_level : Level = get_tree().current_scene.current_level
 	var camera_point: Vector3
 	match future_mode:

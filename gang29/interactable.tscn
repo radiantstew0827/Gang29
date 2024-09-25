@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://calcp30jhayjp"]
+
+[node name="Interactable" type="Node3D"]
