@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://calcp30jhayjp"]
+[gd_scene load_steps=2 format=3 uid="uid://calcp30jhayjp"]
 
-[node name="Interactable" type="Node3D"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_3kbm2"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_3kbm2")
