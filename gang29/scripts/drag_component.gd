@@ -4,7 +4,7 @@ class_name DragingComponent
 
 @export var player_camera : Player
 @export var enabled : bool = true
-@export var dragged_object : Node3D
+@export var dragged_object : Draggable
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +43,7 @@ func drop_object():
 	dragged_object = null
 
 	
-func get_hover_mouse() -> Interactable:
+func get_hover_mouse() -> Draggable:
 	var origin_end := get_mouse_origin_end()
 
 	var space_state := player_camera.get_world_3d().direct_space_state
@@ -51,7 +51,7 @@ func get_hover_mouse() -> Interactable:
 	var result =  space_state.intersect_ray(query)
 	
 	#FINALLY
-	if result.is_empty() or result["collider"] is not Interactable:
+	if result.is_empty() or result["collider"] is not Draggable:
 		return null
 	else:
 		return result["collider"]
@@ -62,7 +62,6 @@ func handle_input() -> void:
 			drop_object()
 		else: # pick up object
 			dragged_object = get_hover_mouse()
-			print(dragged_object)
 			
 	
 func move_object() -> void:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://tnkstllrqrim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_5sls7"]
-[ext_resource type="PackedScene" uid="uid://calcp30jhayjp" path="res://interactable.tscn" id="2_80dny"]
 [ext_resource type="ArrayMesh" uid="uid://dvydt7tjektm3" path="res://Assets/key.obj" id="2_k830e"]
+[ext_resource type="PackedScene" uid="uid://dy3nqomln1agp" path="res://draggable.tscn" id="2_u4uen"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
 albedo_color = Color(0.59, 0.385762, 0.1947, 1)
@@ -20,7 +20,7 @@ size = Vector3(0.1, 3, 5)
 albedo_color = Color(0.433886, 0.488662, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nn2we"]
-size = Vector3(0.472, 0.052, 0.199)
+size = Vector3(4.72, 0.52, 1.99)
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
 script = ExtResource("1_5sls7")
@@ -55,19 +55,18 @@ material_override = SubResource("StandardMaterial3D_0pna3")
 flip_faces = true
 size = Vector3(5, 3, 5)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Future"]
-
-[node name="Key" parent="Future" instance=ExtResource("2_80dny")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0365477, -1.30047, 0.0756359)
+[node name="Key" parent="Future" instance=ExtResource("2_u4uen")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.04157, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key"]
-transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -0.132568, 0.013855, 0.000546455)
+transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -1.32323, 0, 0)
 shape = SubResource("BoxShape3D_nn2we")
 
 [node name="Mesh" type="MeshInstance3D" parent="Future/Key"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = ExtResource("2_k830e")
 skeleton = NodePath("../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Future"]
 
 [node name="Walls" type="StaticBody3D" parent="Future"]
 
