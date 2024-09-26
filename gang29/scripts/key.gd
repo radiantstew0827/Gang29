@@ -1,7 +1,7 @@
-extends Interactable
-class_name Draggable
+extends Draggable
+class_name KeyItem
 
-@export var can_be_dragged := true
+@export var key_id : String
 
 
 # Called when the node enters the scene tree for the first time.

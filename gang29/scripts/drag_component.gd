@@ -43,7 +43,7 @@ func drop_object():
 	dragged_object = null
 
 	
-func get_hover_mouse() -> Draggable:
+func get_hover_mouse() -> Interactable:
 	var origin_end := get_mouse_origin_end()
 
 	var space_state := player_camera.get_world_3d().direct_space_state
@@ -51,7 +51,8 @@ func get_hover_mouse() -> Draggable:
 	var result =  space_state.intersect_ray(query)
 	
 	#FINALLY
-	if result.is_empty() or result["collider"] is not Draggable:
+	#print(result) # thsi was added here so many times, you migth as well keep it
+	if result.is_empty() or result["collider"] is not Interactable:
 		return null
 	else:
 		return result["collider"]
@@ -61,9 +62,15 @@ func handle_input() -> void:
 		if dragged_object:
 			drop_object()
 		else: # pick up object
-			dragged_object = get_hover_mouse()
+			var interactable_object = get_hover_mouse()
+			if interactable_object == null: return
 			
-	
+			interactable_object.Click.emit()
+			
+			if interactable_object is Draggable:
+				dragged_object = get_hover_mouse()
+
+
 func move_object() -> void:
 	var origin_end := get_mouse_origin_end()
 	
@@ -77,7 +84,7 @@ func move_object() -> void:
 		dragged_object.global_position = result["position"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not enabled : return
 	handle_input()
 	

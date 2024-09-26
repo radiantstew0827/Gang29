@@ -1,5 +1,6 @@
 extends Node3D
 class_name Interactable
+signal Click
 
 var outline_shader : Node
 
@@ -8,15 +9,15 @@ var outline_shader : Node
 func _ready() -> void:
 	pass # Replace with function body.
 
-func outline(visible : bool) -> void:
-	if visible and outline_shader:
+func outline(visible_change : bool) -> void:
+	if visible_change and outline_shader:
 		pass
 		#create
 	else:
 		pass
-		#sahder.viasible = visible
+		#sahder.viasible = visible_change
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
