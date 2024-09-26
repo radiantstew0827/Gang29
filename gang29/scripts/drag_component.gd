@@ -1,6 +1,7 @@
 extends Node
 class_name DragingComponent
-# gives player ability to drag
+# gives player ability to ~~drag~~ click
+# ye the name "drag" is a bit out dated
 
 @export var player_camera : Player
 @export var enabled : bool = true
@@ -28,7 +29,6 @@ func drop_object():
 	
 	print(result)
 	if result.is_empty(): return
-	print(true)
 
 	dragged_object.global_position = result["position"]
 	
@@ -42,7 +42,6 @@ func drop_object():
 	dragged_object.global_position = result["position"]
 	dragged_object = null
 
-	
 func get_hover_mouse() -> Interactable:
 	var origin_end := get_mouse_origin_end()
 
@@ -58,17 +57,35 @@ func get_hover_mouse() -> Interactable:
 		return result["collider"]
 
 func handle_input() -> void:
-	if Input.is_action_just_pressed("Drag"):
-		if dragged_object:
-			drop_object()
-		else: # pick up object
-			var interactable_object = get_hover_mouse()
-			if interactable_object == null: return
+	if not Input.is_action_just_pressed("Drag"): return
+	
+	var origin_end := get_mouse_origin_end()
+
+	# raycast
+	#NOTE: get_hover_mouse() cannot be used as query needs to ignore the dragged_object
+	# alos, this is getting quite spaghettio
+	var interactable : Interactable
+	if dragged_object:
+		var space_state := player_camera.get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1], 1 ,[dragged_object]) 
+		var result =  space_state.intersect_ray(query)
+		
+		if result.is_empty() or result["collider"] is not Interactable:
+			interactable = null
+		else:
+			interactable = result["collider"]
+	else:
+		interactable = get_hover_mouse()
+	
+	# player can interact with an interactable even if dragged_object exists
+	if interactable:
+		interactable.Click.emit(dragged_object)
+		
+		if interactable is Draggable:
+			dragged_object = interactable
+	elif dragged_object:
+		drop_object()
 			
-			interactable_object.Click.emit()
-			
-			if interactable_object is Draggable:
-				dragged_object = get_hover_mouse()
 
 
 func move_object() -> void:

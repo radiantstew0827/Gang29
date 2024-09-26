@@ -1,6 +1,6 @@
 extends Node3D
 class_name Interactable
-signal Click
+signal Click(draggable : Draggable)
 
 var outline_shader : Node
 

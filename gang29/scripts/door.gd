@@ -19,14 +19,16 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_click() -> void:
+func _on_click(_draggable) -> void:
 	if not unlocked: return
-	if open: return
 	
-	anim_player.play("Open")
-	await anim_player.animation_finished
+	if open:
+		level.level_completed.emit()
+	else:
+		anim_player.play("Open")
+		await anim_player.animation_finished
+		
+		open = true
 	
-	open = true
-	level.level_completed.emit()
 	
 	pass # Replace with function body.

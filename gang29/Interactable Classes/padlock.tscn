@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxljny4sda6dn"]
+
+[ext_resource type="PackedScene" uid="uid://dk1epch5vv1uf" path="res://Assets/padlock.fbx" id="1_1s6uo"]
+[ext_resource type="Script" path="res://Interactable Classes/padlock.gd" id="1_dl1cb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwicj"]
+size = Vector3(0.320557, 0.51123, 0.139771)
+
+[node name="Lock" type="StaticBody3D"]
+script = ExtResource("1_dl1cb")
+
+[node name="padlock" parent="." instance=ExtResource("1_1s6uo")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193115, -0.0669556)
+shape = SubResource("BoxShape3D_qwicj")
+
+[connection signal="Click" from="." to="." method="_on_click"]
