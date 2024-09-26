@@ -19,12 +19,23 @@ func get_mouse_origin_end() -> Array[Vector3]:
 	return [origin, origin+direction*99]
 	
 func drop_object():
-	# Adjusts key positiuon (so it would be less in the wall)
+	# Adjusts key positiuon (so it would be less in the wall, since ray hits its own hitbox)
 	var origin_end := get_mouse_origin_end()
 	
 	var space_state := player_camera.get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1])
-	var result =  space_state.intersect_ray(query)
+	var result :=  space_state.intersect_ray(query)
+	
+	print(result)
+	if result.is_empty(): return
+	print(true)
+
+	dragged_object.global_position = result["position"]
+	
+	# Moves the key to the floor
+	
+	query = PhysicsRayQueryParameters3D.create(dragged_object.global_position, Vector3(0,-99,0))
+	result =  space_state.intersect_ray(query)
 	
 	if result.is_empty(): return
 	
@@ -61,7 +72,6 @@ func move_object() -> void:
 	var space_state := player_camera.get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1], 1 ,[dragged_object]) 
 	var result =  space_state.intersect_ray(query)
-	print(result)
 	
 	#FINALLY
 	if not result.is_empty():
