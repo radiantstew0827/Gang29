@@ -42,7 +42,6 @@ func drop_object():
 	dragged_object.global_position = result["position"]
 	dragged_object = null
 
-	
 func get_hover_mouse() -> Interactable:
 	var origin_end := get_mouse_origin_end()
 
