@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tnkstllrqrim"]
+[gd_scene load_steps=10 format=3 uid="uid://tnkstllrqrim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_5sls7"]
 [ext_resource type="PackedScene" uid="uid://calcp30jhayjp" path="res://interactable.tscn" id="2_80dny"]
@@ -7,12 +7,20 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
 albedo_color = Color(0.59, 0.385762, 0.1947, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxqbh"]
+size = Vector3(5, 0.097, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fa7s"]
+size = Vector3(5, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8bjl"]
+size = Vector3(0.1, 3, 5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pna3"]
 albedo_color = Color(0.433886, 0.488662, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nn2we"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ohvaq"]
+size = Vector3(0.472, 0.052, 0.199)
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
 script = ExtResource("1_5sls7")
@@ -27,6 +35,20 @@ size = Vector3(5, 3, 5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Present"]
 
+[node name="Walls" type="StaticBody3D" parent="Present"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.548, 0)
+shape = SubResource("BoxShape3D_cxqbh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55)
+shape = SubResource("BoxShape3D_2fa7s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0, 0)
+shape = SubResource("BoxShape3D_p8bjl")
+
 [node name="Future" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
 material_override = SubResource("StandardMaterial3D_0pna3")
@@ -35,23 +57,31 @@ size = Vector3(5, 3, 5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Future"]
 
-[node name="Key2" parent="Future" instance=ExtResource("2_80dny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.30047, 0)
+[node name="Key" parent="Future" instance=ExtResource("2_80dny")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0365477, -1.30047, 0.0756359)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key2"]
-transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key"]
+transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -0.132568, 0.013855, 0.000546455)
 shape = SubResource("BoxShape3D_nn2we")
 
-[node name="Key" type="MeshInstance3D" parent="Future/Key2"]
+[node name="Mesh" type="MeshInstance3D" parent="Future/Key"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = ExtResource("2_k830e")
 skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Future"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39566, 0, 0)
+[node name="Walls" type="StaticBody3D" parent="Future"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/StaticBody3D"]
-shape = SubResource("BoxShape3D_ohvaq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.548, 0)
+shape = SubResource("BoxShape3D_cxqbh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55)
+shape = SubResource("BoxShape3D_2fa7s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0, 0)
+shape = SubResource("BoxShape3D_p8bjl")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)

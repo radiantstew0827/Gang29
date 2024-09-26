@@ -9,20 +9,34 @@ class_name DragingComponent
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-func drop_object():
-	pass
 	
-func get_hover_mouse() -> Interactable:
+func get_mouse_origin_end() -> Array[Vector3]:
 	# finds origin and direction
 	var viewport := get_viewport()
 	var mouse_position := viewport.get_mouse_position()
 	var origin := player_camera.project_ray_origin(mouse_position)
 	var direction := player_camera.project_ray_normal(mouse_position)
+	return [origin, origin+direction*99]
 	
-	# raycast
+func drop_object():
+	# Adjusts key positiuon (so it would be less in the wall)
+	var origin_end := get_mouse_origin_end()
+	
 	var space_state := player_camera.get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(origin, origin+direction*99)
+	var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1])
+	var result =  space_state.intersect_ray(query)
+	
+	if result.is_empty(): return
+	
+	dragged_object.global_position = result["position"]
+	dragged_object = null
+
+	
+func get_hover_mouse() -> Interactable:
+	var origin_end := get_mouse_origin_end()
+
+	var space_state := player_camera.get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1])
 	var result =  space_state.intersect_ray(query)
 	
 	#FINALLY
@@ -37,23 +51,20 @@ func handle_input() -> void:
 			drop_object()
 		else: # pick up object
 			dragged_object = get_hover_mouse()
+			print(dragged_object)
 			
 	
 func move_object() -> void:
-	# finds origin and direction
-	var viewport := get_viewport()
-	var mouse_position := viewport.get_mouse_position()
-	var origin := player_camera.project_ray_origin(mouse_position)
-	var direction := player_camera.project_ray_normal(mouse_position)
+	var origin_end := get_mouse_origin_end()
 	
 	# raycast
 	var space_state := player_camera.get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(origin, origin+direction*99,[dragged_object]) 
-	# TODO make it so the ray would ignore dragged object
+	var query := PhysicsRayQueryParameters3D.create(origin_end[0], origin_end[1], 1 ,[dragged_object]) 
 	var result =  space_state.intersect_ray(query)
+	print(result)
 	
 	#FINALLY
-	if not result.is_empty() and result["collider"] is  Interactable:
+	if not result.is_empty():
 		dragged_object.global_position = result["position"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
