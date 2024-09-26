@@ -1,12 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://tnkstllrqrim"]
+[gd_scene load_steps=14 format=3 uid="uid://tnkstllrqrim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_5sls7"]
+[ext_resource type="PackedScene" uid="uid://biblg2yp8qg46" path="res://Interactable Classes/Key.tscn" id="2_hipvj"]
+[ext_resource type="ArrayMesh" uid="uid://dvydt7tjektm3" path="res://Assets/key.obj" id="2_k830e"]
+[ext_resource type="PackedScene" uid="uid://bocwbfyim2afj" path="res://Interactable Classes/present_door.tscn" id="4_kdmvi"]
+[ext_resource type="PackedScene" uid="uid://1q5mb6kwwabt" path="res://Interactable Classes/future_door.tscn" id="5_cvjkd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
-albedo_color = Color(0.59, 0.385762, 0.1947, 1)
+albedo_color = Color(0.817646, 0.640141, 0.476514, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxqbh"]
+size = Vector3(5, 0.097, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fa7s"]
+size = Vector3(5, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8bjl"]
+size = Vector3(0.1, 3, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pna3"]
 albedo_color = Color(0.433886, 0.488662, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ijxnv"]
+resource_name = "test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bi8tm"]
+_data = {
+"test": SubResource("Animation_ijxnv")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nn2we"]
+size = Vector3(4.72, 0.52, 1.99)
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
 script = ExtResource("1_5sls7")
@@ -19,7 +55,26 @@ material_override = SubResource("StandardMaterial3D_n0oft")
 flip_faces = true
 size = Vector3(5, 3, 5)
 
+[node name="Present Door" parent="Present" node_paths=PackedStringArray("level") instance=ExtResource("4_kdmvi")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.449, -1.499, 0)
+level = NodePath("../..")
+unlocked = true
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Present"]
+
+[node name="Walls" type="StaticBody3D" parent="Present"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.548, 0)
+shape = SubResource("BoxShape3D_cxqbh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55)
+shape = SubResource("BoxShape3D_2fa7s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Present/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0, 0)
+shape = SubResource("BoxShape3D_p8bjl")
 
 [node name="Future" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
@@ -29,5 +84,40 @@ size = Vector3(5, 3, 5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Future"]
 
+[node name="Walls" type="StaticBody3D" parent="Future"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.548, 0)
+shape = SubResource("BoxShape3D_cxqbh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55)
+shape = SubResource("BoxShape3D_2fa7s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Future/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0, 0)
+shape = SubResource("BoxShape3D_p8bjl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Future/Walls"]
+libraries = {
+"": SubResource("AnimationLibrary_bi8tm")
+}
+
+[node name="Key" parent="Future" instance=ExtResource("2_hipvj")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.04157, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key"]
+transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -1.32323, 0, 0)
+shape = SubResource("BoxShape3D_nn2we")
+
+[node name="Mesh" type="MeshInstance3D" parent="Future/Key"]
+mesh = ExtResource("2_k830e")
+skeleton = NodePath("../../..")
+
+[node name="FutureDoor" parent="Future" node_paths=PackedStringArray("level") instance=ExtResource("5_cvjkd")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.449, -1.499, 0)
+level = NodePath("../..")
+unlocked = true
+
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://biblg2yp8qg46"]
+
+[ext_resource type="Script" path="res://scripts/key.gd" id="1_y4kq4"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_y4kq4")

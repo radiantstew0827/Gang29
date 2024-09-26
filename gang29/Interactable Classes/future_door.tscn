@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://1q5mb6kwwabt"]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_p8jig"]
+[ext_resource type="PackedScene" uid="uid://31ww3chbcgc6" path="res://Assets/future_door_frame.fbx" id="2_2u3ei"]
+[ext_resource type="PackedScene" uid="uid://bpriqrsv526nu" path="res://Assets/future_door.fbx" id="3_px028"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwmb3"]
+size = Vector3(0.561096, 5.26088, 3.80176)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdu31"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ef0gn"]
+resource_name = "Open"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("future_door:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.073, 0, 0), Vector3(0.0733839, 0, -3.45693)]
+}
+
+[sub_resource type="Animation" id="Animation_k7aha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("future_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.073, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3rry"]
+_data = {
+"Open": SubResource("Animation_ef0gn"),
+"RESET": SubResource("Animation_k7aha")
+}
+
+[node name="FutureDoor" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_p8jig")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00308228, 2.44405, -0.00244141)
+shape = SubResource("BoxShape3D_gwmb3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00739656, 2.5215, 0.0155335)
+size = Vector3(0.131714, 5.06122, 2.98431)
+material = SubResource("StandardMaterial3D_wdu31")
+
+[node name="future_door_frame" parent="." instance=ExtResource("2_2u3ei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0733839, 0, 0)
+
+[node name="future_door" parent="." instance=ExtResource("3_px028")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i3rry")
+}
+
+[connection signal="Click" from="." to="." method="_on_click"]
