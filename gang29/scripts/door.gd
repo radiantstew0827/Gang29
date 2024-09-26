@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_click() -> void:
+func _on_click(_draggable) -> void:
 	if not unlocked: return
 	if open: return
 	

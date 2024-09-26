@@ -14,14 +14,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_click(draggable : Draggable = null) -> void:
-	print("say gex")
+func _on_click(draggable : Draggable) -> void:
+	print("say gex", draggable)
 	if draggable is not KeyItem: return
+	print("sesbian lex")
 	
 	if draggable.key_id == key_id:
+		# probs not the best way to do it but fuck it
 		door.unlocked = true
-		draggable.queue_free()
-		queue_free()
+		draggable.destroy_self()
+		call_deferred("queue_free")
 		pass
 	
 	pass # Replace with function body.

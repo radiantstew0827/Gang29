@@ -2,6 +2,7 @@ extends Camera3D
 class_name Player
 
 @export var future_mode : bool = true
+@export var drag_component : DragingComponent
 
 var hover_object : Interactable
 
@@ -13,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if hover_object: hover_object.outline(false)
+	if is_instance_valid(hover_object) : hover_object.outline(false)
 	
 	#======== Interactable detection ===========
 	# finds origin and direction

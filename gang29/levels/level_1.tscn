@@ -59,7 +59,6 @@ size = Vector3(5, 3, 5)
 [node name="Present Door" parent="Present" node_paths=PackedStringArray("level") instance=ExtResource("4_kdmvi")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.449, -1.499, 0)
 level = NodePath("../..")
-unlocked = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Present"]
 
@@ -106,12 +105,25 @@ libraries = {
 
 [node name="Key" parent="Future" instance=ExtResource("2_hipvj")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.04157, 0)
+key_id = ":3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key"]
 transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -1.32323, 0, 0)
 shape = SubResource("BoxShape3D_nn2we")
 
 [node name="Mesh" type="MeshInstance3D" parent="Future/Key"]
+mesh = ExtResource("2_k830e")
+skeleton = NodePath("../../..")
+
+[node name="Key2" parent="Future" instance=ExtResource("2_hipvj")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.04157, -1.5701)
+key_id = "man"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key2"]
+transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -1.32323, 0, 0)
+shape = SubResource("BoxShape3D_nn2we")
+
+[node name="Mesh" type="MeshInstance3D" parent="Future/Key2"]
 mesh = ExtResource("2_k830e")
 skeleton = NodePath("../../..")
 
@@ -123,5 +135,7 @@ unlocked = true
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
 
-[node name="Lock" parent="." instance=ExtResource("6_3111g")]
+[node name="Lock" parent="." node_paths=PackedStringArray("door") instance=ExtResource("6_3111g")]
 transform = Transform3D(0.452297, -0.300845, 0.839595, -0.0503916, 0.931266, 0.360839, -0.890442, -0.205515, 0.406049, -2.2983, -0.634718, 0.516754)
+key_id = ":3"
+door = NodePath("../Present/Present Door")
