@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn8wpliag50kv"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_i10cf"]
+[ext_resource type="PackedScene" uid="uid://dskj4noach52j" path="res://Assets/Meshes/remote.fbx" id="2_lty0t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7n7o6"]
+size = Vector3(0.424072, 0.0844024, 0.680664)
+
+[node name="Remote" type="StaticBody3D"]
+script = ExtResource("1_i10cf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7n7o6")
+
+[node name="remote" parent="." instance=ExtResource("2_lty0t")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
