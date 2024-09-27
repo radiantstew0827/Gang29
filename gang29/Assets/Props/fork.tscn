@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6fo0tdgk8qal" path="res://Assets/Meshes/fork.fbx" id="2_ofrev"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vt3vm"]
-size = Vector3(0.767, 0.0321563, 0.767)
+size = Vector3(0.767, 0.0537109, 0.767)
 
 [node name="Fork" type="StaticBody3D"]
 script = ExtResource("1_wx04p")
