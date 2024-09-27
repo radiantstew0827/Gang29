@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bocwbfyim2afj"]
 
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_h22ar"]
-[ext_resource type="PackedScene" uid="uid://bi68qiwhplirp" path="res://Assets/present_door_frame.fbx" id="1_qcuq4"]
-[ext_resource type="PackedScene" uid="uid://bqm2hr58i1xcb" path="res://Assets/present_door.fbx" id="2_v5kek"]
+[ext_resource type="PackedScene" uid="uid://bi68qiwhplirp" path="res://Assets/Meshes/present_door_frame.fbx" id="1_qcuq4"]
+[ext_resource type="PackedScene" uid="uid://bqm2hr58i1xcb" path="res://Assets/Meshes/present_door.fbx" id="2_v5kek"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwmb3"]
 size = Vector3(0.561096, 5.26088, 3.80176)

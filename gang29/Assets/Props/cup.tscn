@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxv8pthm8tq6a"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_fu41q"]
+[ext_resource type="PackedScene" uid="uid://egi7m1q3xb7a" path="res://Assets/Meshes/Cup.fbx" id="2_jiuta"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7n7o6"]
+size = Vector3(0.2, 0.238, 0.2)
+
+[node name="Cup" type="StaticBody3D"]
+script = ExtResource("1_fu41q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116945, 0.0015552)
+shape = SubResource("BoxShape3D_7n7o6")
+
+[node name="Cup" parent="." instance=ExtResource("2_jiuta")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

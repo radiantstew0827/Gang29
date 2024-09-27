@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpriqrsv526nu"
-path="res://.godot/imported/future_door.fbx-38e351fe7ba17ee40941e40f39d11693.scn"
+uid="uid://cnhhnr3j2n612"
+path="res://.godot/imported/future_plant.fbx-24a0b7c2ef2342fbd7180f2da4ce6ba5.scn"
 
 [deps]
 
-source_file="res://Assets/future_door.fbx"
-dest_files=["res://.godot/imported/future_door.fbx-38e351fe7ba17ee40941e40f39d11693.scn"]
+source_file="res://Assets/Meshes/future_plant.fbx"
+dest_files=["res://.godot/imported/future_plant.fbx-24a0b7c2ef2342fbd7180f2da4ce6ba5.scn"]
 
 [params]
 

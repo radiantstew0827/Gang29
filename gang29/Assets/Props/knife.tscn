@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbocki3vo2k82"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_crbhf"]
+[ext_resource type="PackedScene" uid="uid://qftbxt3g3hqu" path="res://Assets/Meshes/knife.fbx" id="2_fwv81"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8trth"]
+size = Vector3(0.767, 0.0321563, 0.767)
+
+[node name="Knife" type="StaticBody3D"]
+script = ExtResource("1_crbhf")
+
+[node name="knife" parent="." instance=ExtResource("2_fwv81")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.013332)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00321094, -0.0381115)
+shape = SubResource("BoxShape3D_8trth")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://tnkstllrqrim"]
+[gd_scene load_steps=14 format=3 uid="uid://tnkstllrqrim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_5sls7"]
 [ext_resource type="PackedScene" uid="uid://biblg2yp8qg46" path="res://Interactable Classes/Key.tscn" id="2_hipvj"]
-[ext_resource type="ArrayMesh" uid="uid://dvydt7tjektm3" path="res://Assets/key.obj" id="2_k830e"]
 [ext_resource type="PackedScene" uid="uid://bocwbfyim2afj" path="res://Interactable Classes/present_door.tscn" id="4_kdmvi"]
 [ext_resource type="PackedScene" uid="uid://1q5mb6kwwabt" path="res://Interactable Classes/future_door.tscn" id="5_cvjkd"]
 [ext_resource type="PackedScene" uid="uid://dxljny4sda6dn" path="res://Interactable Classes/padlock.tscn" id="6_3111g"]
+[ext_resource type="Script" path="res://scripts/padlock.gd" id="6_fdjf6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
 albedo_color = Color(0.817646, 0.640141, 0.476514, 1)
@@ -41,9 +41,6 @@ tracks/0/keys = {
 _data = {
 "test": SubResource("Animation_ijxnv")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nn2we"]
-size = Vector3(4.72, 0.52, 1.99)
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
 script = ExtResource("1_5sls7")
@@ -107,14 +104,6 @@ libraries = {
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -1.04157, 0)
 key_id = ":3"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Future/Key"]
-transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, -1.32323, 0, 0)
-shape = SubResource("BoxShape3D_nn2we")
-
-[node name="Mesh" type="MeshInstance3D" parent="Future/Key"]
-mesh = ExtResource("2_k830e")
-skeleton = NodePath("../../..")
-
 [node name="FutureDoor" parent="Future" node_paths=PackedStringArray("level") instance=ExtResource("5_cvjkd")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.449, -1.499, 0)
 level = NodePath("../..")
@@ -124,5 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
 
 [node name="Lock" parent="." node_paths=PackedStringArray("door") instance=ExtResource("6_3111g")]
 transform = Transform3D(0.452297, -0.300845, 0.839595, -0.0503916, 0.931266, 0.360839, -0.890442, -0.205515, 0.406049, -2.2983, -0.634718, 0.516754)
+script = ExtResource("6_fdjf6")
 key_id = ":3"
 door = NodePath("../Present/Present Door")
