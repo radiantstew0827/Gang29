@@ -5,4 +5,5 @@ Credits:
 - [radiantstew0827](https://github.com/radiantstew0827) (Programmer)
 - [surreal_de5igns (Instagram)](www.instagram.com/surreal_de5igns/) (Artist)
 - Lukas Alkauskas (Designer)
-- A concept artist and artist but they stayed anonymous.
+- Morgan Blake (Concept Artist)
+- An artist but they stayed anonymous.
