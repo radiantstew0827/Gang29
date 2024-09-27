@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnevk1b4ocakp"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_xxbmc"]
+[ext_resource type="PackedScene" uid="uid://dof081sfeba0x" path="res://Assets/Meshes/future_lamp.fbx" id="2_fmicg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snr3h"]
+size = Vector3(3.328, 4.027, 3.328)
+
+[node name="Future Lamp" type="StaticBody3D"]
+script = ExtResource("1_xxbmc")
+
+[node name="future_lamp" parent="." instance=ExtResource("2_fmicg")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.360093, 0)
+shape = SubResource("BoxShape3D_snr3h")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436406, 0)
+light_color = Color(1, 0.77, 0.773833, 1)
+omni_range = 2.0

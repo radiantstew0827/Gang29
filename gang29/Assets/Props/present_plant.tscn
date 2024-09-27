@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2mk8v0clq1g"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_v2x3b"]
+[ext_resource type="PackedScene" uid="uid://b1pu5m4ngk6i4" path="res://Assets/Meshes/present_plant.fbx" id="2_eh1mu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snr3h"]
+size = Vector3(4.099, 3.6, 4.099)
+
+[node name="Present Plant" type="StaticBody3D"]
+script = ExtResource("1_v2x3b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.269439, 0)
+shape = SubResource("BoxShape3D_snr3h")
+
+[node name="present_plant" parent="." instance=ExtResource("2_eh1mu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

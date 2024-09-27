@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://co0y15wiu2cuf"]
+
+[ext_resource type="PackedScene" uid="uid://dssa0bakmwymk" path="res://Assets/Meshes/future_sofa.fbx" id="1_87a04"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61ea1"]
+size = Vector3(2.48236, 1.12167, 5.8978)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yaefi"]
+size = Vector3(0.85202, 0.86373, 5.8978)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1s4vu"]
+size = Vector3(1.70714, 0.86373, 1.52299)
+
+[node name="Future Sofa" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0663792, 0.273577, 0)
+shape = SubResource("BoxShape3D_61ea1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.341206, 0.767056, 0)
+shape = SubResource("BoxShape3D_yaefi")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.300708, 0.767056, 1.0937)
+shape = SubResource("BoxShape3D_1s4vu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.301, 0.767, -1.094)
+shape = SubResource("BoxShape3D_1s4vu")
+
+[node name="future_sofa" parent="." instance=ExtResource("1_87a04")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)

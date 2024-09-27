@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://20oma2h00u80"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_g3g5j"]
+[ext_resource type="PackedScene" uid="uid://cnhhnr3j2n612" path="res://Assets/Meshes/future_plant.fbx" id="2_d80ma"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfyf6"]
+size = Vector3(3.909, 3.6, 3.909)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fcae"]
+size = Vector3(5.90125, 3.96667, 4.2688)
+
+[node name="Future Plant" type="StaticBody3D"]
+script = ExtResource("1_g3g5j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.269439, 0)
+shape = SubResource("BoxShape3D_lfyf6")
+
+[node name="future_plant" parent="." instance=ExtResource("2_d80ma")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.0793121, 0.968041, -0.0702942)
+shape = SubResource("BoxShape3D_2fcae")

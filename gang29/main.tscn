@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkljsr2ucp0ml"]
+[gd_scene load_steps=8 format=3 uid="uid://dkljsr2ucp0ml"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_fsvus"]
 [ext_resource type="PackedScene" uid="uid://dvgqtd0qbc6od" path="res://levels/level_0.tscn" id="2_4b42f"]
 [ext_resource type="PackedScene" uid="uid://dx11ljl8uk5yh" path="res://player.tscn" id="2_d843j"]
 [ext_resource type="PackedScene" uid="uid://tnkstllrqrim" path="res://levels/level_1.tscn" id="2_n1jrb"]
+[ext_resource type="PackedScene" uid="uid://deygq24akdor2" path="res://levels/The End.tscn" id="4_8gpvq"]
 [ext_resource type="PackedScene" uid="uid://bhhmjgw6126cb" path="res://draging_component.tscn" id="4_my6mk"]
+[ext_resource type="PackedScene" uid="uid://b7ad4803rbwg3" path="res://levels/level_2.tscn" id="4_siqi3"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_fsvus")
-levels = Array[PackedScene]([ExtResource("2_4b42f"), ExtResource("2_n1jrb")])
+levels = Array[PackedScene]([ExtResource("2_4b42f"), ExtResource("2_n1jrb"), ExtResource("4_siqi3"), ExtResource("4_8gpvq")])
 player = NodePath("Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("drag_component") instance=ExtResource("2_d843j")]
@@ -18,3 +20,29 @@ drag_component = NodePath("DragingComponent")
 
 [node name="DragingComponent" parent="Player" node_paths=PackedStringArray("player_camera") instance=ExtResource("4_my6mk")]
 player_camera = NodePath("..")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -496.0
+offset_top = -186.0
+offset_right = -63.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 23
+text = "Use Space to switch between present and future. Restart the game to play it again ocne you reached the end.
+"
+autowrap_mode = 2

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dk1epch5vv1uf"
-path="res://.godot/imported/padlock.fbx-22f9d428f98e989afcdbdd7635af9b5e.scn"
+uid="uid://dssa0bakmwymk"
+path="res://.godot/imported/future_sofa.fbx-44d040ea4aec8ca4bb9be49f9af710f5.scn"
 
 [deps]
 
-source_file="res://Assets/padlock.fbx"
-dest_files=["res://.godot/imported/padlock.fbx-22f9d428f98e989afcdbdd7635af9b5e.scn"]
+source_file="res://Assets/Meshes/future_sofa.fbx"
+dest_files=["res://.godot/imported/future_sofa.fbx-44d040ea4aec8ca4bb9be49f9af710f5.scn"]
 
 [params]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4dteqrbyqs8m"]
+
+[ext_resource type="PackedScene" uid="uid://uxrwpmtlghw5" path="res://Assets/Meshes/future_wardrobe.fbx" id="1_s6wya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61ea1"]
+size = Vector3(1.41162, 2.00336, 4.9613)
+
+[node name="Future Wardrobe" type="StaticBody3D"]
+
+[node name="future_wardrobe" parent="." instance=ExtResource("1_s6wya")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0401967, 0.494367, 0)
+shape = SubResource("BoxShape3D_61ea1")

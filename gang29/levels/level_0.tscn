@@ -1,8 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvgqtd0qbc6od"]
+[gd_scene load_steps=21 format=3 uid="uid://dvgqtd0qbc6od"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_t2ox7"]
 [ext_resource type="PackedScene" uid="uid://bocwbfyim2afj" path="res://Interactable Classes/present_door.tscn" id="2_trs21"]
+[ext_resource type="PackedScene" uid="uid://bg6eqc7n1l73g" path="res://Assets/Furniture non interactable/present_wardrobe.tscn" id="3_r76vl"]
+[ext_resource type="PackedScene" uid="uid://bto6vxde8f0uu" path="res://Assets/Props/present_lamp.tscn" id="4_dnp8p"]
 [ext_resource type="PackedScene" uid="uid://1q5mb6kwwabt" path="res://Interactable Classes/future_door.tscn" id="5_faeu5"]
+[ext_resource type="PackedScene" uid="uid://c4dteqrbyqs8m" path="res://Assets/Furniture non interactable/future_wardrobe.tscn" id="5_ynhoo"]
+[ext_resource type="PackedScene" uid="uid://cn18whblfxx2a" path="res://Assets/Props/present_book.tscn" id="6_75gye"]
+[ext_resource type="PackedScene" uid="uid://bnevk1b4ocakp" path="res://Assets/Props/future_lamp.tscn" id="7_fk8ix"]
+[ext_resource type="PackedScene" uid="uid://dplo1bsoedeyc" path="res://Assets/Props/fork.tscn" id="7_mllms"]
+[ext_resource type="PackedScene" uid="uid://20oma2h00u80" path="res://Assets/Props/future_plant.tscn" id="8_f4oly"]
+[ext_resource type="PackedScene" uid="uid://cbocki3vo2k82" path="res://Assets/Props/knife.tscn" id="8_ye6is"]
+[ext_resource type="PackedScene" uid="uid://dc2mk8v0clq1g" path="res://Assets/Props/present_plant.tscn" id="9_j36hl"]
+[ext_resource type="PackedScene" uid="uid://cbq44fheeie11" path="res://Assets/Props/future_book.tscn" id="13_iwtou"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
 albedo_color = Color(0.817646, 0.640141, 0.476514, 1)
@@ -70,6 +80,27 @@ shape = SubResource("BoxShape3D_2fa7s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 0, 0)
 shape = SubResource("BoxShape3D_p8bjl")
 
+[node name="Present Wardrobe" parent="Present" instance=ExtResource("3_r76vl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94694, -1.4995, -0.0673209)
+
+[node name="Present Lamp" parent="Present" instance=ExtResource("4_dnp8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85201, -0.480621, -0.920345)
+
+[node name="Present Plant" parent="Present" instance=ExtResource("9_j36hl")]
+transform = Transform3D(0.520107, -0.00197682, -0.854099, -0.00747249, 0.999949, -0.00686481, 0.854069, 0.00995268, 0.520065, -1.89766, -1.4995, 1.95239)
+
+[node name="Present Book" parent="Present" instance=ExtResource("6_75gye")]
+transform = Transform3D(0.702408, 0, 0.972946, 0, 1.2, 0, -0.972946, 0, 0.702408, -1.73876, -0.50977, 0.856196)
+
+[node name="Present Book2" parent="Present" instance=ExtResource("6_75gye")]
+transform = Transform3D(-0.628123, 0, 1.02248, 0, 1.2, 0, -1.02248, 0, -0.628123, -1.73876, -0.447733, 0.856196)
+
+[node name="Fork" parent="Present" instance=ExtResource("7_mllms")]
+transform = Transform3D(0.47699, 0, 0.878909, 0, 1, 0, -0.878909, 0, 0.47699, 1.63822, -1.44935, 1.59187)
+
+[node name="Knife" parent="Present" instance=ExtResource("8_ye6is")]
+transform = Transform3D(0.597765, 0, 0.801671, 0, 1, 0, -0.801671, 0, 0.597765, 1.63822, -1.44935, 0.840611)
+
 [node name="Future" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
 material_override = SubResource("StandardMaterial3D_0pna3")
@@ -101,6 +132,27 @@ libraries = {
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.449, -1.499, 0)
 level = NodePath("../..")
 unlocked = true
+
+[node name="Future Wardrobe" parent="Future" instance=ExtResource("5_ynhoo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.146544, -1.4995, -2.16474)
+
+[node name="Future Lamp" parent="Future" instance=ExtResource("7_fk8ix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0111, -0.504294, -2.11704)
+
+[node name="Future Plant" parent="Future" instance=ExtResource("8_f4oly")]
+transform = Transform3D(-0.497156, 0, 0.867661, 0, 1, 0, -0.867661, 0, -0.497156, -1.83326, -1.50094, 1.72134)
+
+[node name="Fork" parent="Future" instance=ExtResource("7_mllms")]
+transform = Transform3D(0.47699, 0, 0.878909, 0, 1, 0, -0.878909, 0, 0.47699, 1.65433, -1.44935, 1.49752)
+
+[node name="Knife" parent="Future" instance=ExtResource("8_ye6is")]
+transform = Transform3D(0.597765, 0, 0.801671, 0, 1, 0, -0.801671, 0, 0.597765, 1.65433, -1.44935, 0.746268)
+
+[node name="Future Book" parent="Future" instance=ExtResource("13_iwtou")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.727315, -0.504293, -2.12514)
+
+[node name="Future Book2" parent="Future" instance=ExtResource("13_iwtou")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.725023, -0.444577, -2.1314)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)

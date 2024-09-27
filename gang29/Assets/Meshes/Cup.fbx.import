@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bi68qiwhplirp"
-path="res://.godot/imported/present_door_frame.fbx-37425696079591c5e6ffc74ec3034223.scn"
+uid="uid://egi7m1q3xb7a"
+path="res://.godot/imported/Cup.fbx-8aeddd41f6e8582d60a7d8e7bd50fd8b.scn"
 
 [deps]
 
-source_file="res://Assets/present_door_frame.fbx"
-dest_files=["res://.godot/imported/present_door_frame.fbx-37425696079591c5e6ffc74ec3034223.scn"]
+source_file="res://Assets/Meshes/Cup.fbx"
+dest_files=["res://.godot/imported/Cup.fbx-8aeddd41f6e8582d60a7d8e7bd50fd8b.scn"]
 
 [params]
 

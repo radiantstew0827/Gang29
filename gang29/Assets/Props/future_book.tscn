@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbq44fheeie11"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_762k2"]
+[ext_resource type="PackedScene" uid="uid://b6651gxo5rpyk" path="res://Assets/Meshes/future_book.fbx" id="2_ycft0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snr3h"]
+size = Vector3(0.455566, 0.10498, 0.60199)
+
+[node name="Future Book" type="StaticBody3D"]
+script = ExtResource("1_762k2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00317734, 0.0254893, -0.0077538)
+shape = SubResource("BoxShape3D_snr3h")
+
+[node name="future_book" parent="." instance=ExtResource("2_ycft0")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, -0.0620302)

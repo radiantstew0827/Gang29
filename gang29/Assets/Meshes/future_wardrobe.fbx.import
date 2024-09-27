@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://31ww3chbcgc6"
-path="res://.godot/imported/future_door_frame.fbx-994be63166245f6ee7757bcb6721e942.scn"
+uid="uid://uxrwpmtlghw5"
+path="res://.godot/imported/future_wardrobe.fbx-4192065a288234adaac5b9ca7f158cd4.scn"
 
 [deps]
 
-source_file="res://Assets/future_door_frame.fbx"
-dest_files=["res://.godot/imported/future_door_frame.fbx-994be63166245f6ee7757bcb6721e942.scn"]
+source_file="res://Assets/Meshes/future_wardrobe.fbx"
+dest_files=["res://.godot/imported/future_wardrobe.fbx-4192065a288234adaac5b9ca7f158cd4.scn"]
 
 [params]
 

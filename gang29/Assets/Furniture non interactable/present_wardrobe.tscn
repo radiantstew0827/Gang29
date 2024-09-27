@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg6eqc7n1l73g"]
+
+[ext_resource type="PackedScene" uid="uid://8vtwub1s0dfg" path="res://Assets/Meshes/present_wardrobe.fbx" id="1_icpin"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6c0c"]
+size = Vector3(1.47809, 1.69116, 4.9613)
+
+[node name="Present Wardrobe" type="StaticBody3D"]
+
+[node name="present_wardrobe" parent="." instance=ExtResource("1_icpin")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0392303, 0.566939, 0)
+shape = SubResource("BoxShape3D_n6c0c")
