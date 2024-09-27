@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://deygq24akdor2"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_rrit6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0oft"]
+albedo_color = Color(0.817646, 0.640141, 0.476514, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_iwsgb"]
+text = "This is the end
+fr fr"
+font_size = 64
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pna3"]
+albedo_color = Color(0.433886, 0.488662, 1, 1)
+
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("camera_point", "present_room", "future_room")]
+script = ExtResource("1_rrit6")
+camera_point = NodePath("Marker3D")
+present_room = NodePath("Present")
+future_room = NodePath("Future")
+
+[node name="Present" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_n0oft")
+flip_faces = true
+size = Vector3(8, 3, 5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Present"]
+omni_range = 8.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Present"]
+transform = Transform3D(0.622515, -0.330745, 0.709284, 0, 0.906308, 0.422618, -0.782608, -0.263086, 0.56419, 0, 0, 0)
+mesh = SubResource("TextMesh_iwsgb")
+
+[node name="Future" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
+material_override = SubResource("StandardMaterial3D_0pna3")
+flip_faces = true
+size = Vector3(8, 3, 5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Future"]
+
+[node name="red light" type="OmniLight3D" parent="Future"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317577, -0.0613389, 0.339897)
+light_color = Color(1, 0, 0, 1)
+light_energy = 7.552
+omni_range = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Future"]
+transform = Transform3D(0.622515, -0.330745, 0.709284, 0, 0.906308, 0.422618, -0.782608, -0.263086, 0.56419, 0, 0, 0)
+mesh = SubResource("TextMesh_iwsgb")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)

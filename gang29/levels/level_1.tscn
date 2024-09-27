@@ -120,6 +120,9 @@ transform = Transform3D(1.19932, 0, 0.0405188, 0, 1.2, 0, -0.0405188, 0, 1.19932
 [node name="Present Book2" parent="Present" instance=ExtResource("9_gonsp")]
 transform = Transform3D(1.13807, 0, -0.380527, 0, 1.2, 0, 0.380527, 0, 1.13807, 2.97642, -1.4683, 1.52705)
 
+[node name="Present Lamp" parent="Present" instance=ExtResource("17_ynnup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54487, -1.4995, 1.64545)
+
 [node name="Future" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.23078)
 material_override = SubResource("StandardMaterial3D_0pna3")
@@ -188,6 +191,3 @@ transform = Transform3D(0.80003, 0, 0.59996, 0, 1, 0, -0.59996, 0, 0.80003, -3.0
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
-
-[node name="Present Lamp" parent="." instance=ExtResource("17_ynnup")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54487, -1.4995, 1.64545)
